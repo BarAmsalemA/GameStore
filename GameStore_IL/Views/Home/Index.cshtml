@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<html>
+
+
+<body>
+    <div class="text-center">
+        <h1 class="display-4">ברוכים הבאים לחנות המשחקים הגדולה בישראל</h1>
+    </div>
+    <div id="body">
+
+    </div>
+    @*<div class="row">
+        <div class="card col-sm-4" style="width: 18rem;">
+            <img src="~/Photos/BoxGame.png.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">משחקי קופסא</h5>
+                <p class="card-text">משחקי לוח, משחקי קלפים, משחקי קוביות, משחקי מלחמה ועוד.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <div class="card col-sm-4" style="width: 18rem;">
+            <img src="~/Photos/ball games.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">משחקי ואביזרי ספורט</h5>
+                <p class="card-text">אביזרי התעמלות, כדורים, ציוד התעמלות.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <div class="card col-sm-4" style="width: 18rem;">
+            <img src="~/Photos/CmGames.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">משחקי מחשב וקונסולה</h5>
+                <p class="card-text">משחקים חדישים, ציוד היקפי</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>*@
+    @*<div class="card Col-sm-4" style="width: 18rem;">
+        <img src="~/Photos/suduku.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">משחקי חשיבה</h5>
+            <p class="card-text">משחק חשיבה הוא אחד האמצעים הטובים לפיתוח מיומנויות חשיבה בשילוב הנאה. המשחקים מהווים "תרגילי התעמלות למוח" ומפתחים מגוון מיומנויות חשיבה</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>*@
+</body>
+</html>
+<script>
+    console.log("Works!");
+    const body = document.getElementById("body");
+
+    const mock = [
+        {
+            title: "משחקי חשיבה",
+            text: 'שחק חשיבה הוא אחד האמצעים הטובים לפיתוח מיומנויות חשיבה בשילוב הנאה. המשחקים מהווים "תרגילי התעמלות למוח" ומפתחים מגוון מיומנויות חשיבה',
+            img: '/Photos/suduku.jpg'
+        },
+        {
+            title: "משחקי קופסא",
+            text: "משחקי לוח, משחקי קלפים, משחקי קוביות, משחקי מלחמה ועוד.",
+            img: '/Photos/BoxGame.png.jpg'
+        },
+        {
+            title: "משחקי ואביזרי ספורט",
+            text: "אביזרי התעמלות, כדורים, ציוד התעמלות.",
+            img: ' /Photos/ballgames.jpg'
+        },
+        {
+            title: "משחקי מחשב וקונסולה",
+            text: "משחקים חדישים, ציוד היקפי",
+            img: ' /Photos/CmGames.jpg'
+        },
+        {
+            title: "משחקי לגו",
+            text: "ציוד לגו להרכבה ובנייה",
+            img: ' /Photos/Lego_bricks.jpg'
+        },
+        {
+            title: "משחקי מחשב וקונסולה",
+            text: "משחקים חדישים, ציוד היקפי",
+            img: ' /Photos/CmGames.jpg'
+        }
+    ]
+    setTimeout(() => {
+        for (let i = 0; i < mock.length; i++) {
+            $("#body").append(
+                '<div class= "card col-sm-4" > <img src=' + mock[i].img + ' class="card-img-top" alt="...">' +
+                '<div class="card-body">' +
+                '<h5 class="card-title">' + mock[i].title + '</h5>' +
+                '<p class="card-text">' + mock[i].text + '</p>' +
+                '<a href="#" class="btn btn-primary">Go somewhere</a>' +
+                '</div>' +
+                '</div>'
+            )
+        };
+    },2000)
+
+
+</script>
+
+<style>
+    .card {
+        transition: all 0.5s;
+    }
+    .card:hover {
+        box-shadow: 5px 5px 15px 5px #000000
+    }
+</style>
