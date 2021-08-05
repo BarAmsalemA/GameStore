@@ -1,0 +1,455 @@
+﻿@{
+    ViewData["Title"] = "item page";
+}
+<html>
+
+
+<body>
+    <h1>Viewing products of type</h1>
+    <div class="itemsContainer">
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Product name</label>
+                        <input type="email" class="form-control" id="productName" aria-describedby="emailHelp" placeholder="Enter proudct name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Product description</label>
+                        <textarea rows="5" class="form-control" id="productDescription" placeholder="Product Description"> </textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Product Price</label>
+                            <input type="email" class="form-control" id="productPrice" aria-describedby="emailHelp" placeholder="Enter proudct price">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Product Stock</label>
+                            <input type="email" class="form-control" id="productStock" aria-describedby="emailHelp" placeholder="Enter proudct stock">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Example file input</label>
+                        <input type="file" class="form-control-file" id="productImage">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputState">Category</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-danger" onclick="closeModal()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+    function closeModal() {
+        $(".modal").modal('toggle')
+    }
+    const categoryId = window.location.href.split('categoryId=')[1];
+    const mock = [
+        {
+            title: "דמקה",
+            text: 'משחק דמקה',
+            img: "/Photos/PhotosHashiva/damka.jpg",
+            categoryId: 0,
+            id: 1,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "משחק הזכרון",
+            text: "משחק קלפים",
+            img: "/Photos/PhotosHashiva/Memory-game.jpg",
+            categoryId: 0,
+            id: 2,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "קוביה הונגרית",
+            text: "משחק החשיבה המפורסם מתאים לכל גיל",
+            img: "/Photos/PhotosHashiva/rubicob.jpg",
+            categoryId: 0,
+            id: 3,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "שח-מט",
+            text: "בהשראת גמביט המלכה",
+            img: "/Photos/PhotosHashiva/shahmath.jpg",
+            categoryId: 0,
+            id: 4,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "סיימון",
+            text: "משחק החשיבה המיתולוגי",
+            img: "/Photos/PhotosHashiva/simon.jpg",
+            categoryId: 0,
+            id: 5,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "סודוקו",
+            text: "המשחק המדהים מיפן הרחוקה",
+            img: "/Photos/PhotosHashiva/sudukuku.jpg",
+            categoryId: 0,
+            id: 6,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "ארבע בשורה",
+            text: "משחק נהדר לילדים ולכל המשפחה",
+            img: "/Photos/PhotosBoxGames/4inarow.jpg",
+            categoryId: 1,
+            id: 7,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "דאבל",
+            text: "הומצא בשנת 2021 והתגלה כהצלחה מסחררת",
+            img: "/Photos/PhotosBoxGames/double.jpg",
+            categoryId: 1,
+            id: 8,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "ג'אנגל ספיד",
+            text: "הלהיט החדש בבתי הספר ובצבא",
+            img: "/Photos/PhotosBoxGames/jangelspped.jpg",
+            categoryId: 1,
+            id: 9,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "קאטן",
+            text: "משחק נהדר וממכר",
+            img: "/Photos/PhotosBoxGames/katan.jpg",
+            categoryId: 1,
+            id: 10,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "מונפול",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosBoxGames/monapol.jpg",
+            categoryId: 1,
+            id: 11,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "טאקי",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosBoxGames/takii.jpg",
+            categoryId: 1,
+            id: 12,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "כדורסל",
+            text: "משחק נהדר לילדים",
+            img: "/Photos/PhotosSport/bascketball.jpg",
+            categoryId: 2,
+            id: 13,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "כדור פוטבול",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosSport/football.jpg",
+            categoryId: 2,
+            id: 14,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "כדור כדורעף",
+            text: "משחק קלאסי ועל-זמני",
+            img:"/Photos/PhotosSport/kaduraf.jpg",
+            categoryId: 2,
+            id: 15,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "ערכת פינג פונג",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosSport/pingpong.jpg",
+            categoryId: 2,
+            id: 16,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "כדור כדורגל",
+            text: "משחק קלאסי ועל-זמני",
+            img:"/Photos/PhotosSport/soccerball.jpeg" ,
+            categoryId: 2,
+            id: 17,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "ערכת טניס",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosSport/tenis.jpg",
+            categoryId: 2,
+            id: 18,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "מונפול",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosBoxGames/monapol.jpg",
+            categoryId: 2,
+            id: 19,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "משחק קונסולה NBA 2K",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosCmGames/2K21.jpg",
+            categoryId: 3,
+            id: 20,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "משחק הכדורגל פיפא 2021",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosCmGames/fifa211.jpg",
+            categoryId: 3,
+            id: 21,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "פורטנייט",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosCmGames/fortnite.jpg",
+            categoryId: 3,
+            id: 22,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "GTA",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosCmGames/gta.jpg",
+            categoryId: 3,
+            id: 23,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "משחק המחשב לגו",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosCmGames/lego.jpg",
+            categoryId: 3,
+            id: 24,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "סוניק",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosCmGames/sonic.jpg",
+            categoryId: 3,
+            id: 25,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית בית",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/legohome.gif",
+            categoryId: 4,
+            id: 26,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית ג'יפ",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/legojip.jpg",
+            categoryId: 4,
+            id: 27,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית מטוס",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/legomatos.jpg",
+            categoryId: 4,
+            id: 28,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית מכונית ניקיון",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/legomenake.jpg",
+            categoryId: 4,
+            id: 29,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית צוללת",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/legoundetwater.jpg",
+            categoryId: 4,
+            id: 30,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית ספינה",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/sfinalego.jpg",
+            categoryId: 4,
+            id: 31,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית ספינה",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/sfinalego.jpg",
+            categoryId: 5,
+            id: 32,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית ספינה",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/sfinalego.jpg",
+            categoryId: 5,
+            id: 33,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית ספינה",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/sfinalego.jpg",
+            categoryId: 5,
+            id: 34,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית ספינה",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/sfinalego.jpg",
+            categoryId: 5,
+            id: 35,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית ספינה",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/sfinalego.jpg",
+            categoryId: 5,
+            id: 36,
+            stock: 50,
+            price: 40
+        },
+        {
+            title: "בניית ספינה",
+            text: "משחק קלאסי ועל-זמני",
+            img: "/Photos/PhotosLego/sfinalego.jpg",
+            categoryId: 5,
+            id: 37,
+            stock: 50,
+            price: 40
+        },
+
+
+    ]
+    setTimeout(() => {
+        for (let i = 0; i < mock.length; i++) {
+            if (categoryId == mock[i].categoryId) {
+              
+                $(".itemsContainer").append(
+                    '<div class= "card col-sm-4" > <img src=' + mock[i].img + ' class="card-img-top" alt="...">' +
+                    '<button type="button" onclick="editItem(' + mock[i].id + ')") class="btn btn-primary open-modal" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Item</button>' +
+                    '<div class="card-body">' +
+                    '<h5 class="card-title">' + mock[i].title + '</h5>' +
+                    '<p class="card-text">' + mock[i].text + '</p>' +
+                    '<a href="#" class="btn btn-primary" onclick="goToCategoryItems(' + mock[i].category + ')" >View Category Items</a>' +
+                    '</div>' +
+                    '</div>'
+                )
+            }
+
+        };
+    }, 2000)
+
+    function editItem(productId) {
+        item = mock.filter(item => item.id == productId)
+        $("#productName").val(item[0].title);
+        $("#productDescription").val(item[0].text);
+    };
+</script>
+
+<style>
+    .modal-content {
+        padding: 60px;
+    }
+    .itemsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        justify-content: space-between;
+        padding: 25px;
+    }
+
+        .itemsContainer .card {
+            flex: 0 0 30%
+        }
+
+    .card {
+        transition: all 0.5s;
+        flex: 1;
+        margin-bottom: 20px;
+    }
+
+        .card:hover {
+            box-shadow: 5px 5px 15px 5px #000000
+        }
+        .card .open-modal {
+            visibility: hidden;
+        }
+
+        .card:hover .open-modal {
+            visibility: visible;
+        }
+</style>
