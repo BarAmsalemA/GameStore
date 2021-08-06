@@ -39,3 +39,4 @@ C:\Users\baram\source\repos\GameStore_IL\GameStore_IL\obj\Debug\net5.0\GameStore
 C:\Users\baram\source\repos\GameStore_IL\GameStore_IL\obj\Debug\net5.0\GameStore_IL.csproj.CopyComplete
 C:\Users\baram\source\repos\GameStore_IL\GameStore_IL\obj\Debug\net5.0\GameStore_IL.csproj.AssemblyReference.cache
 C:\Users\baram\source\repos\GameStore_IL\GameStore_IL\obj\Debug\net5.0\Razor\Views\Home\item.cshtml.g.cs
+C:\Users\baram\source\repos\GameStore_IL\GameStore_IL\obj\Debug\net5.0\Razor\Views\Home\About.cshtml.g.cs
